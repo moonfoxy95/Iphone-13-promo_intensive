@@ -1,0 +1,565 @@
+html {
+  box-sizing: border-box;
+  position: relative;  /* чтобы картинки случайно не выпали из html */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 320px;  /* минимальная ширина старого смартфона */
+  min-height: 100vh;  /* body на всю высоту экрана, какой бы она ни была */
+
+  font-family: "SF UI Text", Arial, sans-serif; /* основной (любой) и обязательно запасной */
+  font-size: 20px; /* стандарт; зависит от макета */
+  font-weight: 500;  /* стандарт; зависит от макета */
+
+  color: #000;  /* стандарт; зависит от макета */
+  background-color: #fff;  /* стандарт; зависит от макета */
+
+  /* из codeopen.io */
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+img, 
+svg {  /* картинка обязательно должна быть ограничена блоком, чтобы не выпадала */
+  display: block;  /* из codeopen.io */
+  max-width: 100%;  /* ширина родительского блока */
+  height: auto;  /* чтобы картинка не искажалась */
+}
+
+svg {
+  max-height: 100%;
+}
+
+button {
+  cursor: pointer;  /* по стандарту не прописан, но нужен */
+}
+
+a {
+  color: inherit;
+  text-decoration-line: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;  /* если точки будут нужны, прописывать через class */
+}
+
+h1, h2, h3, h4, p, figure, fieldset {
+  margin: 0;
+}
+
+.visually-hidden {  /* вместо hidden или display: none; и для отсутствующих заголовков */
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+/* из codeopen.io
+.visually-hidden {
+  position: fixed;
+  transform: scele (0);
+}
+*/
+
+/* из codeopen.io, пример для макета 1180px + padding 2*30px
+.container {
+  max-width: 1240px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+*/
+
+/* custom */
+
+.container {
+  max-width: 1350px; /* адаптив, изначально было 1290px, но из-за добавления padding контент внутри соответствующе сжался, и для компенсации добавляем 2*30=60px к 1290 */
+  margin: 0 auto;
+  padding: 0 30px; /* адаптив, при сужении контент не прижимается к краям */
+}
+
+.main__section {
+  padding: 70px 0; /* отступ между секциями */
+}
+
+.header {
+  padding: 30px 0; /* отступ от самого верха */
+}
+
+.header__container {
+  max-width: 1130px;
+  margin: 0 auto; /* центрирование header-а */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* вертикальное выравнивание */
+}
+
+.header__logo {
+  height: 40px;
+}
+
+.navigation {
+  font-weight: 400;
+}
+
+.navigation__list {
+  display: flex; /* было list-item в столбик, стало в строку */  
+  align-items: center;
+}
+
+.navigation__item {
+  display: flex; /* чтобы блочные псевдоэлементы "насадились на шампур", изначально они спускаются вниз */
+  align-items: center;
+}
+
+.navigation__item:not(:last-child)::after {
+  content: '';
+  display: block; /* block чтобы можно было задавать размеры, изначально inline-block */
+  width: 1px;
+  height: 40px;
+  background-color: #C9C9C9;
+  margin: 0 25px;
+}
+
+@media (max-width: 800px) {
+  .header__container {
+    align-items: flex-start; /* выравнивание по верхнему левому краю, яблоко поднимается из середины вверх */
+  }
+  
+  .navigation {
+    font-size: 16px;
+    line-height: 24px; /* можно и mb, но области кнопок станут меньше, и на низких разрешениях будет тяжелее кликнуть */
+  }
+
+  .navigation__list {
+    display: block; /* был flex */
+  }
+
+  .navigation__item {
+    justify-content: flex-end; /* выравнивание по правому краю */
+  }
+
+  .navigation__item:not(:last-child)::after {
+    display: none;
+  }
+}
+
+.button {
+  cursor: pointer;
+  padding: 18px 23px;
+  background-color: #0071E3;
+  border-radius: 30px;
+  border: none;
+  color: #fff;
+}
+
+@media (max-width:800px) {
+  .button {
+    font-size: 18px;
+  }
+}
+
+/* offer */
+
+.offer__container {
+  padding: 30px; /* адаптив, отодвигаем (на всякий случай) текст от краев, но bg все еще занимает это пространство */
+  margin: 0 -30px; /* адаптив, расширяем по краям блок, избавляясь от обрезающих краев */
+  min-height: 820px;  /* 790px по макету + 30px паддинг, указанный выше */
+
+  /* background-image: url(../images/phones.png); */
+  background-image: image-set( /* image-set вместо отдельного медиа-запроса */
+    url(../images/phones-2x.webp) type("image/webp") 2x,
+    url(../images/phones.webp) type("image/webp") 1x,
+    url(../images/phones-2x.png) 2x,
+    url(../images/phones.png) 1x   
+  );
+
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 1290px; /* адаптив, 2х картинки не будут выползать за пределы */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* вертикальное выравнивание из-за column стало горизонтальным */
+}
+
+/* @media (min-resolution: 2dppx) {
+  .offer__container {
+    background-image: url(../images/phones-2x.png);
+  }
+} */
+
+.main__title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+.offer__title {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 41px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.offer__price {  
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 800px) {
+  .offer__container {
+    background-image: image-set(
+      url(../images/phones-800-2x.webp) type("image/webp") 2x,
+      url(../images/phones-800.webp) type("image/webp") 1x,
+      url(../images/phones-800-2x.png) 2x,
+      url(../images/phones-800.png) 1x
+    );
+    background-size: 800px;
+    min-height: 720px;  
+  }
+
+  .main__title {
+    font-size: 18px;
+  }
+
+  .offer__title {
+    font-size: 26px;
+  }
+
+  .offer__price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 440px) {
+  .offer__container {
+    background-image: image-set(
+      url(../images/phones-440-2x.webp) type("image/webp") 2x,
+      url(../images/phones-440.webp) type("image/webp") 1x,
+      url(../images/phones-440-2x.png) 2x,
+      url(../images/phones-440.png) 1x
+    );
+    
+    background-size: 405px; /* применится и к нижнему медиа-запросу */
+  }
+}
+
+/* features */
+
+.features__title {
+  font-size: 34px;
+  line-height: 41px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.features__list {
+  display: flex;
+  flex-wrap: wrap; /* перенос элементов на другие строки */
+  justify-content: space-around;
+  gap: 60px 30px;
+}
+
+.card {
+  width: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;  
+}
+
+.card__picture {
+  border-radius: 34px;
+  box-shadow: 0px 10px 40px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 35px;
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.card__description {
+  font-size: 22px;
+  line-height: 26px;
+  max-width: 300px;
+}
+
+@media (max-width: 800px) {
+  .features__title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 440px) {
+  .card__title {
+    font-size: 18px;
+  }
+
+  .card__description {
+    font-size: 20px;
+  }
+}
+
+/* order */
+
+.order__title {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 41px;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px 30px;
+  margin-bottom: 90px;
+}
+
+.form__box {
+  width: 630px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 34px;
+  padding: 70px 80px 100px;
+}
+
+.form__box-title {  
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 40px;  
+  text-align: center;
+  color: rgb(201, 201, 201);
+}
+
+.form__label {
+  padding-left: 16px;
+  display: block;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  margin-bottom: 16px;
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  height: 90px;
+  border-radius: 20px;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  border: none;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form__submit {
+  display: block;
+  margin: 0 auto;
+}
+
+.form__input:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .form__box {
+    width: 100%;
+    padding: 40px 30px 80px;
+  }
+
+  .form__box-title {
+    font-size: 28px;
+    line-height: 1em;
+  }
+
+  .form__input {
+    height: 60px;
+  }
+}
+
+.checkbox {
+  position: relative;
+  display: block; /* изначально label инлайновый*/
+  margin-bottom: 26px;
+  line-height: 40px; /* выравниваем текст по вертикали, приравнивая line-height к height блока */
+  padding-left: 70px;
+  font-weight: 400;
+}
+
+.checkbox__input {
+  position: absolute;
+  appearance: none;
+  top: 0; /* или margin-left: -70px; */
+  left: 0;
+  cursor: pointer;
+}
+
+.checkbox__input::before { /* это элемент белый квадрат */
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block; /* block чтобы задать размеры */
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+  
+}
+
+.checkbox__input::after { /* это элемент галочка */
+  content: '';
+  position: absolute;
+  top: 14px; /* позиционирование галочки */
+  left: 10px;
+  display: block;
+  height: 10px; /* размеры прямоугольника */
+  width: 20px;
+  border: 3px solid black; /* это прямоугольник с толщиной border 3px */
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  opacity: 0; /* галочка есть, но ее не видно */
+}
+
+/* ::before - белый квадрат, ::after - галочка */
+.checkbox__input:checked::after { /* элементу ::after */
+  opacity: 1;
+}
+
+.checkbox__input:focus::before,
+.checkbox__input:hover:not(:disabled)::before {
+  box-shadow: 0px 0px 15px 0px rgba(0, 113, 227, 0.5); /* синяя тень */
+}
+
+.checkbox__input:disabled::before { /* для белого квадрата когда он выключен */
+  background-color: #C9C9C9;
+}
+
+/* стилизация select */  
+
+.choices {
+  max-width: 800px;
+  height: 90px;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.order .order__form .choices__inner {
+  height: 100%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border: none;
+  background-color: #ffffff;  
+}
+
+.is-open .choices__inner {
+  position: relative;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+
+  z-index: 1;
+}
+
+.is-open .choices__list--dropdown {  
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: none;  
+}
+
+.choices[data-type*=select-one]:after { /* стрелочка */
+  height: 9px;
+  width: 9px;
+  border-color: transparent transparent #000000 #000000;
+  border-width: 9px;
+  margin-top: -15px; 
+  margin-right: 35px;  
+  transform: rotate(-45deg);
+  z-index: 1;
+  transition: border-color 0.2s ease-in-out, margin-top 0.2s ease-in-out;
+}
+
+.choices[data-type*=select-one].is-open:after {
+  border-color: #000000 #000000 transparent transparent;
+}
+
+.order .choices__list--dropdown .choices__item {  
+  font-size: 16px;  
+  padding: 20px 15px;
+}
+
+.order .choices__list--dropdown {
+  margin-top: -5px;
+  z-index: 10;
+}
+
+@media (max-width: 800px) {
+  .choises {
+    height: 60px;
+  }
+
+  .choices[data-type*=select-one]:after {
+    height: 6px;
+    width: 6px;
+    border-width: 6px;
+    margin-top: -10px;
+    margin-right: 10px;
+  }
+
+  .choices__inner {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+/* footer */
+
+.footer {  
+  color: rgb(255, 255, 255);
+  background: rgb(201, 201, 201);  
+}
+
+.footer__flex {
+  display: flex;
+  justify-content: space-between;
+  text-align: end;
+  align-items: center;
+  min-height: 113px;
+  font-weight: 400;
+  line-height: 2em;
+}
+
+.footer .footer__copyright {
+  font-size: 20px;
+}
+
+.footer__contact-design-link {
+  display: block;
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">  
+  <title>Iphone 13 Promo</title>
+
+  <link rel="icon" href="./assets/images/apple.svg">
+
+  <link rel="preload" href="./assets/fonts/SFUIText-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/SFUIText-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/SFUIText-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <link rel="stylesheet" href="./assets/styles/normalize.css">
+  <link rel="stylesheet" href="./assets/styles/choices.min.css">
+  <link rel="stylesheet" href="./assets/styles/fonts.css">
+  <link rel="stylesheet" href="./assets/styles/styles.css">
+
+  <script defer src="./assets/js/jquery-3.7.1.min.js"></script>
+  <script defer src="./assets/js/choices.min.js"></script>
+  <script defer src="./assets/js/script.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__container"> <!--отвечает за отступы содержимого header от container-->
+        <img class="header__logo" src="./assets/images/apple.svg" alt="Логотип компании  Яблоко">
+        <nav class="header__navigation navigation"> <!--navigation с потомками можно будет скопировать для переиспользования-->
+          <ul class="navigation__list">
+            <li class="navigation__item"><a href="#">Оформить предзаказ</a></li>
+            <li class="navigation__item"><a href="#">Доставка</a></li>
+            <li class="navigation__item"><a href="#">Официальный сайт Apple</a></li>        
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="main__section offer">
+      <div class="container">
+        <div class="offer__container"> <!--контейнер для bg-изображения, иначе располагалось бы в section и выпадало за пределы container-->
+          <h1 class="main__title">iPhone 13</h1> <!--можно назвать и offer__main-title, т.к. находится в offer-->
+          
+          <h2 class="offer__title">Ближе, чем можно представить.</h2>
+
+          <p class="offer__price">от 79 000 руб.</p>
+
+          <button class="offer__button button">Оформить предзаказ</button> <!--offer__button - для расположения в секции, button - для стилизации и переиспользования-->
+        </div>
+      </div>
+    </section>
+
+    <section class="main__section features">
+      <div class="container">
+        <h2 class="features__title">iPhone 13. Ничего лишнего</h2>
+
+        <ul class="features__list"> <!--если картинка контентная, добавлять в html, а неконтентные через bg в css-->
+          <li class="features__item card"> 
+            <picture>
+              <source type="image/avif" srcset="./assets/images/camera.avif 1x, ./assets/images/camera-2x.avif 2x">
+              <source type="image/webp" srcset="./assets/images/camera.webp 1x, ./assets/images/camera-2x.webp 2x">
+              <img class="card__picture" srcset="./assets/images/camera.jpeg 1x, ./assets/images/camera-2x.jpeg 2x" alt="новый модуль камер"> 
+            </picture>
+            
+            <h3 class="card__title">Камера</h3>
+            <p class="card__description">Система камер PRO.</p>
+          </li>
+
+          <li class="features__item card">
+            <picture>
+              <source type="image/avif" srcset="./assets/images/compect.avif 1x, ./assets/images/compect-2x.avif 2x">
+              <source type="image/webp" srcset="./assets/images/compect.webp 1x, ./assets/images/compect-2x.webp 2x">
+              <img class="card__picture" src="./assets/images/compect.jpeg 1x, ./assets/images/compect-2x.jpeg 2x" alt="комплектация">
+            </picture>
+            
+            <h3 class="card__title">Комплектация</h3>
+            <p class="card__description">Зарядное устройство. Беспроводные наушники.</p>
+          </li>
+
+          <li class="features__item card">
+            <picture>
+              <source type="image/avif" srcset="./assets/images/color.avif 1x, ./assets/images/color-2x.avif 2x">
+              <source type="image/webp" srcset="./assets/images/color.webp 1x, ./assets/images/color-2x.webp 2x">
+              <img class="card__picture" src="./assets/images/color.jpeg 1x, ./assets/images/color-2x.jpeg 2x" alt="серый и синий телефоны">
+            </picture>
+
+            
+            <h3 class="card__title">Цвет</h3>
+            <p class="card__description">Глубоководный синий. Графитовый.</p>
+          </li>
+
+          <li class="features__item card">
+            <picture>
+              <source type="image/avif" srcset="./assets/images/frame.avif 1x, ./assets/images/frame-2x.avif 2x">
+              <source type="image/webp" srcset="./assets/images/frame.webp 1x, ./assets/images/frame-2x.webp 2x">
+              <img class="card__picture" src="./assets/images/frame.jpeg 1x, ./assets/images/frame-2x.jpeg 2x" alt="крепкий и надежный корпус iphone">
+            </picture>
+            
+            <h3 class="card__title">Корпус</h3>
+            <p class="card__description">Водонипроницаемый и противоударный корпус.</p>
+          </li>
+
+          <li class="features__item card">
+            <picture>
+              <source type="image/avif" srcset="./assets/images/line.avif 1x, ./assets/images/line-2x.avif 2x">
+              <source type="image/webp" srcset="./assets/images/line.webp 1x, ./assets/images/line-2x.webp 2x">
+              <img class="card__picture" src="./assets/images/line.jpeg 1x, ./assets/images/line-2x.jpeg 2x" alt="4 модели нового iphone">
+            </picture>
+            
+            <h3 class="card__title">Линейка</h3>
+            <p class="card__description">iPhone 13, iPhone 13 mini, iPhone 13 Pro и 13 Pro Max.</p>
+          </li>
+
+          <li class="features__item card">
+            <picture>
+              <source type="image/avif" srcset="./assets/images/charger_magnetic.avif 1x, ./assets/images/charger_magnetic-2x.avif 2x">
+              <source type="image/webp" srcset="./assets/images/charger_magnetic.webp 1x, ./assets/images/charger_magnetic-2x.webp 2x">
+              <img class="card__picture" src="./assets/images/charger_magnetic.jpeg 1x, ./assets/images/charger_magnetic.jpeg 2x" alt="аккумулятор-магнит">
+            </picture>
+            
+            <h3 class="card__title">Зарядка</h3>
+            <p class="card__description">Аккумулятор-магнит.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="main__section order">
+      <div class="container">
+        <h2 class="order__title">Оформить предзаказ</h2>
+
+        <form class="order__form form" action="https://jsonplaceholder.typicode.com/posts" method="post" id="form-order"> <!--form, т.к. элементы внутри принадлежат form, а не order-->
+          <fieldset class="form__box"> <!--form__box, т.к. квадратные-->
+            <legend class="form__box-title">Персональные данные</legend>
+
+            <label class="form__label" for="full-name">ФИО<sup>*</sup></label>
+            <input type="text" class="form__input" id="full-name" name="full-name" required>
+
+            <label class="form__label" for="phone">Телефон<sup>*</sup></label>
+            <input type="tel" class="form__input" id="phone" name="phone" required>
+
+            <label class="form__label" for="email">E-mail<sup>*</sup></label>
+            <input type="email" class="form__input" id="email" name="email" required>
+          </fieldset>
+
+          <fieldset class="form__box">
+            <legend class="form__box-title">Адрес доставки</legend>
+
+            <label class="form__label" for="city">Город</label>
+            <input type="text" class="form__input" id="city" name="city">
+
+            <label class="form__label" for="index">Индекс</label>
+            <input type="text" class="form__input" id="index" name="index">
+
+            <label class="form__label" for="adress">Адрес</label>
+            <input type="text" class="form__input" id="adress" name="adress">
+          </fieldset>
+
+          <fieldset class="form__box">
+            <legend class="form__box-title">Выбор модели</legend>
+            
+            <label class="form__label" for="model">Модель</label>
+            <select class="form__select" name="model" id="model">
+              <option value="iPhone_13">iPhone 13</option>
+              <option value="iPhone_13_mini">iPhone 13 mini</option>
+              <option value="iPhone_13_Pro">iPhone 13 Pro</option>
+              <option value="iPhone_13_Pro_Max">iPhone 13 Pro Max</option>
+            </select>
+
+            <label class="form__label" for="color">Цвет</label>
+            <select class="form__select" name="color" id="color">
+              <option value="Pearl">Pearl</option>
+              <option value="Graphite">Graphite</option>
+              <option value="Sunset_Gold">Sunset Gold</option>
+              <option value="Rose_Gold">Rose Gold</option>
+              <option value="Pink">Pink</option>
+              <option value="Violet">Violet</option>
+              <option value="Orange">Orange</option>
+              <option value="Product_Red">Product Red</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Mint">Mint</option>
+              <option value="Navy_Blue">Navy Blue</option>   
+            </select>
+          </fieldset>
+
+          <fieldset class="form__box">
+            <legend class="form__box-title">Аксессуары</legend>
+
+            <label class="form__label checkbox"> <!--checkbox можно поставить заранее, если знаем, что будем стилизовать вручную-->
+              <input class="checkbox__input" type="checkbox" name="accessories" value="case">Чехол
+            </label>
+
+            <label class="form__label checkbox">
+              <input class="checkbox__input" type="checkbox" name="accessories" value="headphones" disabled>Наушники AirPods 3 
+            </label>
+
+            <label class="form__label checkbox">
+              <input class="checkbox__input" type="checkbox" name="accessories" value="armored_glass" checked>Защитное стекло
+            </label>
+
+            <label class="form__label checkbox">
+              <input class="checkbox__input" type="checkbox" name="accessories" value="charger">Зарядное устройство MagSafe
+            </label>
+          </fieldset>   
+        </form>
+
+        <button type="submit" class="form__submit button" form="form-order">Оформить</button>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__flex">
+      <p>
+        <small class="footer__copyright">© iPhone 13 Promo, 2021</small> <!--часто для копирайтов используют small, и его обязательно нужно обернуть в p или div, т.к. он не является структурным-->
+      </p>
+
+      <p class="footer__contact-design">
+        Design by Anastasia Ilina
+        <a class="footer__contact-design-link" href="#">ilina9825@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
