@@ -401,20 +401,25 @@ h1, h2, h3, h4, p, figure, fieldset {
   }
 }
 
-.checkbox {
-  position: relative;
-  display: block; /* изначально label инлайновый*/
-  margin-bottom: 26px;
+.checkbox-label {
+  display: inline-block;     
   line-height: 40px; /* выравниваем текст по вертикали, приравнивая line-height к height блока */
   padding-left: 70px;
   font-weight: 400;
 }
 
+.checkbox-label:not(:last-child) {
+  margin-bottom: 26px;
+}
+
+.checkbox-label:last-child {
+  margin-bottom: 0;
+}
+
 .checkbox__input {
-  position: absolute;
+  display: block;
+  position: relative;
   appearance: none;
-  top: 0; /* или margin-left: -70px; */
-  left: 0;
   cursor: pointer;
 }
 
@@ -428,8 +433,7 @@ h1, h2, h3, h4, p, figure, fieldset {
   height: 40px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
-  
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);  
 }
 
 .checkbox__input::after { /* это элемент галочка */

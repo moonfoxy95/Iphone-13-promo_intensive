@@ -187,21 +187,17 @@
           <fieldset class="form__box">
             <legend class="form__box-title">Аксессуары</legend>
 
-            <label class="form__label checkbox"> <!--checkbox можно поставить заранее, если знаем, что будем стилизовать вручную-->
-              <input class="checkbox__input" type="checkbox" name="accessories" value="case">Чехол
-            </label>
+            <input class="checkbox__input checkbox" type="checkbox" name="accessories" id="case" value="case">            
+            <label class="form__label checkbox-label" for="case">Чехол</label><!--checkbox можно поставить заранее, если знаем, что будем стилизовать вручную-->
 
-            <label class="form__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="accessories" value="headphones" disabled>Наушники AirPods 3 
-            </label>
+            <input class="checkbox__input checkbox" type="checkbox" name="accessories" id="headphones" value="headphones" disabled>             
+            <label class="form__label checkbox-label" for="headphones">Наушники AirPods 3</label>
 
-            <label class="form__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="accessories" value="armored_glass" checked>Защитное стекло
-            </label>
+            <input class="checkbox__input checkbox" type="checkbox" name="accessories" id="armored_glass" value="armored_glass" checked>            
+            <label class="form__label checkbox-label" for="armored_glass">Защитное стекло</label>
 
-            <label class="form__label checkbox">
-              <input class="checkbox__input" type="checkbox" name="accessories" value="charger">Зарядное устройство MagSafe
-            </label>
+            <input class="checkbox__input checkbox" type="checkbox" name="accessories" id="charger" value="charger">            
+            <label class="form__label checkbox-label" for="charger">Зарядное устройство MagSafe</label>
           </fieldset>   
         </form>
 
